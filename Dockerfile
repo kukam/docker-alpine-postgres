@@ -4,7 +4,7 @@ MAINTAINER kukam "kukam@freebox.cz"
 
 RUN apk --update --no-cache add bash postgresql postgresql-contrib \
     && mkdir /run/postgresql \
-    && chown postgers:postgres /run/postgresql \
+    && chmod a+rwx /run/postgresql \
     && rm -rf /var/cache/apk/*
 
 ADD https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64 /usr/local/bin/gosu
