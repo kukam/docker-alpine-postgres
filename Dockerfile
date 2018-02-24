@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER Open Source Services [opensourceservices.fr]
+MAINTAINER kukam "kukam@freebox.cz"
 
 RUN apk --update --no-cache add bash postgresql postgresql-contrib \
     && rm -rf /var/cache/apk/*
