@@ -21,11 +21,11 @@ if [ -z "$(ls -A "$PGDATA")" ]; then
     echo   
 
     if [ "$POSTGRES_USER" != 'postgres' ]; then
-        echo "CREATE DATABASE '$POSTGRES_DB';" | gosu postgres postgres --single -jE
+        echo "CREATE DATABASE $POSTGRES_DB;" | gosu postgres postgres --single -jE
         echo
         echo "CREATE USER $POSTGRES_USER WITH PASSWORD '$POSTGRES_USER_PASS';" | gosu postgres postgres --single -jE
         echo
-        echo "GRANT ALL PRIVILEGES ON DATABASE '$POSTGRES_DB' TO '$POSTGRES_USER';" | gosu postgres postgres --single -jE
+        echo "GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_DB TO $POSTGRES_USER;" | gosu postgres postgres --single -jE
         echo
     fi
 fi
