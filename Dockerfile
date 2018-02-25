@@ -15,7 +15,7 @@ COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 5432
-VOLUME /var/lib/postgresql/data
+VOLUME ${PGDATA}
 
 ENTRYPOINT ["/entrypoint.sh"]
 
