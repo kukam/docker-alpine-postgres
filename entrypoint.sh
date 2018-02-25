@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir /run/postgres
-chown postgres:postgres /run/postgres
+mkdir /run/postgresql
+chown postgres:postgres /run/postgresql
 chown -R postgres "$PGDATA"
 
 if [ -z "$(ls -A "$PGDATA")" ]; then
