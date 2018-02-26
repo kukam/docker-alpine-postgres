@@ -10,7 +10,10 @@ if [ -z "$(ls -A "$PGDATA")" ]; then
     
     sed -ri "s/^#(listen_addresses\s*=\s*)\S+/\1'*'/" "$PGDATA"/postgresql.conf
     
-    #{ echo; echo "host all all 0.0.0.0/0 md5"; } >> "$PGDATA"/pg_hba.conf
+    { echo; echo "local  all  postgres    peer"; } > "$PGDATA"/pg_hba.conf
+    { echo; echo "host  all  all  127.0.0.1/32  md5"; } >> "$PGDATA"/pg_hba.conf
+    { echo; echo "host  all  all  ::1/128  md5"; } >> "$PGDATA"/pg_hba.conf
+    { echo; echo "host  all  all  0.0.0.0/0  md5"; } >> "$PGDATA"/pg_hba.conf
 
     : ${POSTGRES_ADMIN_PASS:="postgres"}
     : ${POSTGRES_USER:="postgres"}
