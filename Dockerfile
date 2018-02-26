@@ -11,6 +11,7 @@ RUN chmod +x /usr/local/bin/gosu
 ENV LANG en_US.utf8
 ENV PGDATA /var/lib/postgresql/data
 
+COPT ./pg_hba.conf ${PGDATA}/pg_hba.conf
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
