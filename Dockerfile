@@ -19,4 +19,4 @@ VOLUME ${PGDATA}
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["postgres"]
+CMD ["postgres", "-p 7775"]
