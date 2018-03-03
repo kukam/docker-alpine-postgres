@@ -2,6 +2,7 @@
 
 mkdir /run/postgresql
 chown postgres:postgres /run/postgresql
+mkdir -p $PGDATA
 chown -R postgres "$PGDATA"
 
 # parameters
