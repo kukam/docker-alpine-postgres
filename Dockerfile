@@ -14,7 +14,7 @@ ENV PGDATA /var/lib/postgresql/data
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 5432
+EXPOSE 7775
 VOLUME ${PGDATA}
 
 ENTRYPOINT ["/entrypoint.sh"]
