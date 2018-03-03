@@ -4,6 +4,12 @@ mkdir /run/postgresql
 chown postgres:postgres /run/postgresql
 chown -R postgres "$PGDATA"
 
+# parameters
+POSTGRES_ADMIN_PWD = ${DB_ADMIN_PASSWORD:="postgres"}
+POSTGRES_USER = ${DB_USER:="postgres"}
+POSTGRES_USER_PWD = ${DB_USER_PASSWORD:=$POSTGRES_USER}
+POSTGRES_DB = ${DB_NAME:=$POSTGRES_USER}
+
 if [ -z "$(ls -A "$PGDATA")" ]; then
 
     gosu postgres initdb
@@ -14,11 +20,6 @@ if [ -z "$(ls -A "$PGDATA")" ]; then
     { echo; echo "host  all  all  127.0.0.1/32  md5"; } >> "$PGDATA"/pg_hba.conf
     { echo; echo "host  all  all  ::1/128  md5"; } >> "$PGDATA"/pg_hba.conf
     { echo; echo "host  all  all  0.0.0.0/0  md5"; } >> "$PGDATA"/pg_hba.conf
-
-    : ${POSTGRES_ADMIN_PWD:="postgres"}
-    : ${POSTGRES_USER:="postgres"}
-    : ${POSTGRES_USER_PWD:=$POSTGRES_USER}
-    : ${POSTGRES_DB:=$POSTGRES_USER}
 
     echo "ALTER USER postgres WITH PASSWORD '$POSTGRES_ADMIN_PWD';" | gosu postgres postgres --single -jE
     echo   
