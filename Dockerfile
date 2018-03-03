@@ -8,14 +8,14 @@ RUN apk --update --no-cache add bash postgresql postgresql-contrib \
 ADD https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64 /usr/local/bin/gosu
 RUN chmod +x /usr/local/bin/gosu
 
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 ENV DBPORT 7775
 ENV LANG en_US.utf8
 ENV PGDATA /var/lib/postgresql/data
 
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-EXPOSE 7775
+EXPOSE ${DBPORT}
 VOLUME ${PGDATA}
 
 ENTRYPOINT ["/entrypoint.sh"]
