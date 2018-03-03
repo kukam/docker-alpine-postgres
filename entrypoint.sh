@@ -5,10 +5,10 @@ chown postgres:postgres /run/postgresql
 chown -R postgres "$PGDATA"
 
 # parameters
-: ${DB_ADMIN_PASSWORD:="postgres"}
+: ${DB_NAME:=postgres}
 : ${DB_USER:="postgres"}
 : ${DB_USER_PASSWORD:=postgres}
-: ${DB_NAME:=postgres}
+: ${DB_ADMIN_PASSWORD:=postgres}
 
 if [ -z "$(ls -A "$PGDATA")" ]; then
 
