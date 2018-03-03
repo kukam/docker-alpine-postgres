@@ -13,7 +13,7 @@ RUN chmod +x /entrypoint.sh
 
 ENV DBPORT 7775
 ENV LANG en_US.utf8
-ENV PGDATA /var/lib/postgresql/data
+ENV PGDATA /dbhome
 
 EXPOSE ${DBPORT}
 VOLUME ${PGDATA}
