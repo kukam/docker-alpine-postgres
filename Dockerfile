@@ -5,7 +5,7 @@ MAINTAINER kukam "kukam@freebox.cz"
 RUN apk --update --no-cache add bash postgresql postgresql-contrib \
     && rm -rf /var/cache/apk/*
 
-ADD https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64 /usr/local/bin/gosu
+ADD https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 /usr/local/bin/gosu
 RUN chmod +x /usr/local/bin/gosu
 
 COPY ./entrypoint.sh /entrypoint.sh
